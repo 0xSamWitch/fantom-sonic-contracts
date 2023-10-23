@@ -1,4 +1,4 @@
-import {HardhatUserConfig, task} from "hardhat/config";
+import {HardhatUserConfig} from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "@openzeppelin/hardhat-upgrades";
 import "hardhat-abi-exporter";
@@ -6,19 +6,8 @@ import "hardhat-contract-sizer";
 import "hardhat-storage-layout";
 import "solidity-coverage";
 import {SolcUserConfig} from "hardhat/types";
-import setTrustedRemote from "./tasks/setTrustedRemote";
-import sendOFTCrossChain from "./tasks/sendOFTCrossChain";
 import {ethers} from "ethers";
 import "dotenv/config";
-
-task("set-trusted-remote", "Sets the trusted remote for the target network for layer zero OFT communication")
-  .addParam("targetNetwork", "the target network to set as a trusted remote")
-  .setAction(setTrustedRemote);
-
-task("send-oft-cross-chain", "Send OFT to another network")
-  .addParam("targetNetwork", "the target network to set as a trusted remote")
-  .addParam("amount", "The amount of OFT to send (ether units)")
-  .setAction(sendOFTCrossChain);
 
 const defaultConfig: SolcUserConfig = {
   version: "0.8.21",
@@ -76,9 +65,6 @@ const lowRunsConfig: SolcUserConfig = {
 const config: HardhatUserConfig = {
   solidity: {
     compilers: [defaultConfig, lowRunsConfig, mediumRunsConfig, highRunsConfig],
-    overrides: {
-      "contracts/OFTERC20.sol": highRunsConfig,
-    },
   },
   gasReporter: {
     enabled: true,
@@ -113,6 +99,10 @@ const config: HardhatUserConfig = {
     },
     fantom_testnet: {
       url: process.env.FANTOM_TESTNET_RPC,
+      accounts: [process.env.PRIVATE_KEY as string],
+    },
+    avalanche: {
+      url: process.env.AVALANCHE_RPC,
       accounts: [process.env.PRIVATE_KEY as string],
     },
   },
