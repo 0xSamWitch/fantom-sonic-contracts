@@ -34,7 +34,7 @@ describe("SonicNFT", function () {
     expect(await sonicNFT.getAllNFTs(owner.address)).to.deep.eq([2, 1, 1, 0, 0, 0, 1, 0]);
     await ethers.provider.send("evm_increaseTime", [86400]); // Increase by 1 day. Hit generic
     await sonicNFT.mint();
-    expect(await sonicNFT.balanceOf(owner, 999999)).to.eq(1);
+    expect(await sonicNFT.balanceOf(owner, 8)).to.eq(1);
     expect(await sonicNFT.getAllNFTs(owner.address)).to.deep.eq([2, 1, 1, 0, 0, 0, 1, 1]);
   });
 
