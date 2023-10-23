@@ -40,6 +40,17 @@ describe("SonicNFT", function () {
     expect(await sonicNFT.uri(99)).to.eq("ipfs://CID/${id}.json");
   });
 
+  it("setURI only callable by owner", async function () {
+    const {sonicNFT, alice} = await loadFixture(deployContractsFixture);
+    const newURI = "ipfs://newCID/${id}.json";
+    await expect(sonicNFT.connect(alice).setURI(newURI)).to.be.revertedWithCustomError(
+      sonicNFT,
+      "OwnableUnauthorizedAccount"
+    );
+    await sonicNFT.setURI(newURI);
+    expect(await sonicNFT.uri(2)).to.eq(newURI);
+  });
+
   it("supportsInterface", async function () {
     const {sonicNFT} = await loadFixture(deployContractsFixture);
     expect(await sonicNFT.supportsInterface("0xd9b67a26")).to.be.true; // IERC1155
