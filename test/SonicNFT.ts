@@ -23,15 +23,19 @@ describe("SonicNFT", function () {
     await ethers.provider.send("evm_increaseTime", [86400]); // Increase by 1 day
     await sonicNFT.mint();
     expect(await sonicNFT.balanceOf(owner, 2)).to.eq(1);
+    expect(await sonicNFT.getAllNFTs(owner.address)).to.deep.eq([2, 1, 0, 0, 0, 0, 0, 0]);
     await ethers.provider.send("evm_increaseTime", [86400]); // Increase by 1 day
     await sonicNFT.mint();
     expect(await sonicNFT.balanceOf(owner, 3)).to.eq(1);
-    await ethers.provider.send("evm_increaseTime", [86400 * 4]); // Increase by 4 days (6 in total)
+    expect(await sonicNFT.getAllNFTs(owner.address)).to.deep.eq([2, 1, 1, 0, 0, 0, 0, 0]);
+    await ethers.provider.send("evm_increaseTime", [86400 * 4]); // Increase by 4 days (6 in total). Last one before generic
     await sonicNFT.mint();
     expect(await sonicNFT.balanceOf(owner, 7)).to.eq(1);
-    await ethers.provider.send("evm_increaseTime", [86400]); // Increase by 1 day. Last one until we hit the generic
+    expect(await sonicNFT.getAllNFTs(owner.address)).to.deep.eq([2, 1, 1, 0, 0, 0, 1, 0]);
+    await ethers.provider.send("evm_increaseTime", [86400]); // Increase by 1 day. Hit generic
     await sonicNFT.mint();
     expect(await sonicNFT.balanceOf(owner, 999999)).to.eq(1);
+    expect(await sonicNFT.getAllNFTs(owner.address)).to.deep.eq([2, 1, 1, 0, 0, 0, 1, 1]);
   });
 
   it("uri", async function () {
