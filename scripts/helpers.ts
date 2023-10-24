@@ -16,7 +16,7 @@ export const verifyContracts = async (addresses: string[], args: any[][] = []) =
 
 export const deployERC1155 = async (): Promise<SonicNFT> => {
   const sonicNFT = await ethers.deployContract(TOKEN_CONTRACT_NAME, [
-    "ipfs://QmWdNxB4twbVfsDhbJvi2BwVUJXxn6uEkyAXvNucs4UiJ1/${id}.json",
+    "ipfs://QmdtFFCHZzJXy8sZ5GZJhNPPbdXCo8nPNSUds9e8jru3uL/{id}.json",
   ]);
   await sonicNFT.waitForDeployment();
   console.log(`SonicNFT deployed to: ${await sonicNFT.getAddress()}`);
