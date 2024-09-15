@@ -109,6 +109,34 @@ const config: HardhatUserConfig = {
       url: process.env.FANTOM_SONIC_TESTNET_RPC,
       accounts: [process.env.PRIVATE_KEY as string],
     },
+    celo: {
+      url: process.env.CELO_RPC,
+      accounts: [process.env.PRIVATE_KEY as string],
+    },
+    hedera: {
+      url: process.env.HEDERA_RPC,
+      accounts: [process.env.PRIVATE_KEY as string],
+    },
+    kava: {
+      url: process.env.KAVA_RPC,
+      accounts: [process.env.PRIVATE_KEY as string],
+    },
+    arbitrum: {
+      url: process.env.ARBITRUM_RPC,
+      accounts: [process.env.PRIVATE_KEY as string],
+    },
+    base: {
+      url: process.env.BASE_RPC,
+      accounts: [process.env.PRIVATE_KEY as string],
+    },
+    optimism: {
+      url: process.env.OPTIMISM_RPC,
+      accounts: [process.env.PRIVATE_KEY as string],
+    },
+    polygon: {
+      url: process.env.POLYGON_RPC,
+      accounts: [process.env.PRIVATE_KEY as string],
+    },
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
