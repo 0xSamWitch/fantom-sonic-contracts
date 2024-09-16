@@ -106,7 +106,7 @@ const config: HardhatUserConfig = {
       accounts: [process.env.PRIVATE_KEY as string],
     },
     sonic: {
-      url: process.env.FANTOM_SONIC_TESTNET_RPC,
+      url: process.env.SONIC_TESTNET_RPC,
       accounts: [process.env.PRIVATE_KEY as string],
     },
     celo: {

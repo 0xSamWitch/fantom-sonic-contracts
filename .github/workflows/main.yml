@@ -12,7 +12,16 @@ jobs:
       FANTOM_RPC: NA
       FANTOM_TESTNET_RPC: NA
       AVALANCHE_RPC: NA
-      FANTOM_SONIC_TESTNET_RPC: NA
+      SONIC_TESTNET_RPC: NA
+      CELO_RPC: NA
+      HEDERA_RPC: NA
+      KAVA_RPC: NA
+      ARBITRUM_RPC: NA
+      BASE_RPC: NA
+      OPTIMISM_RPC: NA
+      POLYGON_RPC: NA
+      BSC_RPC: NA
+      TRON_RPC: NA
       PRIVATE_KEY: "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
 
     steps:

@@ -1,8 +1,8 @@
-# Fantom Sonic EVM NFT contracts
+# Web3 transaction speed checker NFT contracts
 
-This project contains the Fantom Sonic NFT used at: TODO
+This project contains the NFT used at: https://speedchecker.paintswap.io
 
-[![Continuous integration](https://github.com/0xSamwitch/hardhat-starter-contracts-ethers/actions/workflows/main.yml/badge.svg)](https://github.com/0xSamWitch/hardhat-starter-contracts-ethers/actions/workflows/main.yml)
+[![Continuous integration](https://github.com/PaintSwap/speedchecker-contracts/actions/workflows/main.yml/badge.svg)](https://github.com/PaintSwap/speedchecker-contracts/actions/workflows/main.yml)
 
 To start copy the .env.sample file to .env and fill in PRIVATE_KEY at minimum, starts with 0x
 
@@ -15,21 +15,10 @@ yarn compile
 # To run the tests
 yarn test
 
-# To get code coverage
-yarn coverage
-
 # To deploy all contracts
 yarn deploy --network <network>
 yarn deploy --network fantom_testnet
 
-# To just deploy the OFT
-yarn deployOFT --network fantom_testnet
-
 # Export abi
 yarn abi
-
-# To fork or open a node connection
-yarn fork
-yarn fork --fork <rpc_url>
-yarn fork --fork https://rpc.ftm.tools
 ```
